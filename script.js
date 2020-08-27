@@ -237,6 +237,32 @@ ko.bindingHandlers.trelloCardCover = {
 }
 
 
+
+// Lifted from Stack Overflow https://stackoverflow.com/questions/12854869/format-date-in-knockout
+ko.bindingHandlers.date = {
+    update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+        var value = valueAccessor();
+        var allBindings = allBindingsAccessor();
+        var valueUnwrapped = ko.utils.unwrapObservable(value);
+    
+        // Date formats: http://momentjs.com/docs/#/displaying/format/
+        var pattern = allBindings.format || 'lll';
+    
+        var output = "-";
+        if (valueUnwrapped !== null && valueUnwrapped !== undefined && valueUnwrapped.length > 0) {
+            output = moment(valueUnwrapped).format(pattern);
+        }
+    
+        if ($(element).is("input") === true) {
+            $(element).val(output);
+        } else {
+            $(element).text(output);
+        }
+    }
+};
+    
+
+
 var filename = 'trello.json';
 var vm;
 window.onload = () => $.get(filename, response => {
