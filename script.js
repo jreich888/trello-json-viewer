@@ -106,6 +106,7 @@ function Action(data) {
     self.id = data.id;
     self.member;
     self.idMemberCreator = data.idMemberCreator;
+    self.origMember = data.member;
     self.memberCreator = data.memberCreator;
     self.data = data.data;
     self.type = data.type;

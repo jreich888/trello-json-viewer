@@ -111,6 +111,14 @@
     <!-- ko template: 'actionPrettyDate' --><!-- /ko -->
   </script>
 
+  <script type="text/html" id="actionDeleteAttachmentFromCard">
+    <!-- ko template: 'memberName' --><!-- /ko -->
+    deleted
+    <a class="underlink" target="_blank" data-bind="text: data.attachment.name, attr: {href: data.attachment.url}"></a>
+    to this card
+    <!-- ko template: 'actionPrettyDate' --><!-- /ko -->
+  </script>
+
   <script type="text/html" id="actionCreateCard">
     <!-- ko template: 'memberName' --><!-- /ko -->
     added this card to
@@ -123,6 +131,25 @@
     transferred this card to
     <span data-bind="text: data.board.name"></span>
     <!-- ko template: 'actionPrettyDate' --><!-- /ko -->
+  </script>
+  
+  <script type="text/html" id="actionCopyCard">
+    <!-- ko template: 'memberName' --><!-- /ko -->
+    copied this card from 
+    <span data-bind="text: data.cardSource.name"></span>
+    in list
+    <span data-bind="text: data.board.name"></span>
+    <!-- ko template: 'actionPrettyDate' --><!-- /ko -->
+  </script>
+  
+  <script type="text/html" id="actionCopyCommentCard">
+    <!-- ko template: 'memberName' --><!-- /ko -->
+    copied comment by 
+    <strong data-bind="text: origMember.fullName"></strong>
+    from card 
+    <span data-bind="text: data.cardSource.name"></span>
+    <!-- ko template: 'actionPrettyDate' --><!-- /ko -->
+    <div class="card-comment" data-bind="markdown: prettyCardComment"></div>
   </script>
   
   <script type="text/html" id="actionAddChecklistToCard">
